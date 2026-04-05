@@ -1098,5 +1098,160 @@
 
 <script src="cardapio.js"></script>
 <script src="promocoes.js"></script>
+<script>
+(function() {
+
+  /* ===== 1. FIRESTORE CONFIG ===== */
+  var FIRESTORE_PROJECT = 'clientes-admin-a2258';
+  var RESTAURANT_SLUG = 'panqueca-calabrese';
+  var FIRESTORE_BASE = 'https://firestore.googleapis.com/v1/projects/' + FIRESTORE_PROJECT + '/databases/(default)/documents/restaurants/' + RESTAURANT_SLUG + '/data/';
+  var isLocal = location.protocol === 'file:';
+
+  /* ===== 2. PARSE FIRESTORE VALUE ===== */
+  function parseFirestoreValue(val) {
+    if (val.stringValue !== undefined) return val.stringValue;
+    if (val.booleanValue !== undefined) return val.booleanValue;
+    if (val.integerValue !== undefined) return Number(val.integerValue);
+    if (val.doubleValue !== undefined) return val.doubleValue;
+    if (val.nullValue !== undefined) return null;
+    if (val.arrayValue) return (val.arrayValue.values || []).map(parseFirestoreValue);
+    if (val.mapValue) {
+      var obj = {};
+      var fields = val.mapValue.fields || {};
+      for (var key in fields) obj[key] = parseFirestoreValue(fields[key]);
+      return obj;
+    }
+    return val;
+  }
+
+  /* ===== 3. FETCH FIRESTORE ===== */
+  function fetchFirestore(docName) {
+    return fetch(FIRESTORE_BASE + docName)
+      .then(function(r) { return r.json(); })
+      .then(function(doc) {
+        if (doc.fields && doc.fields.content) {
+          return parseFirestoreValue(doc.fields.content);
+        }
+        return null;
+      });
+  }
+
+  /* ===== 4. CATEGORY DEFAULTS ===== */
+  var defaultIcons = {
+    'panquecas-salgadas': '🥞', 'panquecas-doces': '🍫', 'massas': '🍝',
+    'macarrao-in-box': '🍜', 'lanches-carne': '🍔', 'lanches-frango': '🍗',
+    'risoto': '🍚', 'porcoes': '🍟', 'bebidas': '🥤', 'diversos': '✨'
+  };
+
+  var defaultDescs = {
+    'panquecas-salgadas': 'Recheios irresistíveis', 'panquecas-doces': 'Sobremesa perfeita',
+    'massas': 'Sabor tradicional', 'macarrao-in-box': 'Prático e saboroso',
+    'lanches-carne': 'Pra fome grande', 'lanches-frango': 'Crocantes e suculentos',
+    'risoto': 'Cremoso e especial', 'porcoes': 'Para compartilhar',
+    'bebidas': 'Refrescantes e geladas', 'diversos': 'Surpresas do cardápio'
+  };
+
+  /* ===== 5. RENDER CATEGORIAS ===== */
+  function renderCategorias(data) {
+    var grid = document.getElementById('catGrid');
+    if (!grid || !data || !data.length) return;
+    var html = '';
+    for (var i = 0; i < data.length; i++) {
+      var tab = data[i];
+      var icon = tab.icon || defaultIcons[tab.id] || '🍽️';
+      var label = tab.label || tab.id;
+      var desc = defaultDescs[tab.id] || '';
+      html += '<a class="cat-card" href="https://panquecacalabresetaquaritinga.eatfood.app/category" target="_blank" rel="noopener">';
+      html += '<div class="cat-icon">' + icon + '</div>';
+      html += '<div class="cat-name">' + label + '</div>';
+      html += '<div class="cat-desc">' + desc + '</div>';
+      html += '</a>';
+    }
+    grid.innerHTML = html;
+  }
+
+  /* ===== 6. RENDER PROMOÇÕES ===== */
+  function renderPromocoes(data) {
+    var days = ['domingo', 'segunda', 'terca', 'quarta', 'quinta', 'sexta', 'sabado'];
+    var today = days[new Date().getDay()];
+    var promos = data[today];
+    if (!promos || !promos.length) return;
+
+    var container = document.getElementById('promoContent');
+    var heroPromo = document.getElementById('heroPromo');
+    if (!container || !heroPromo) return;
+
+    var html = '';
+    for (var i = 0; i < promos.length; i++) {
+      var cls = 'promo-text' + (i === 0 ? ' active' : '');
+      var text = typeof promos[i] === 'object' ? (promos[i].texto || promos[i].text || '') : promos[i];
+      html += '<span class="' + cls + '">' + text + '</span>';
+    }
+    container.innerHTML = html;
+    heroPromo.style.display = 'block';
+
+    if (promos.length > 1) {
+      var items = container.querySelectorAll('.promo-text');
+      var current = 0;
+      setInterval(function() {
+        items[current].classList.remove('active');
+        current = (current + 1) % items.length;
+        items[current].classList.add('active');
+      }, 4000);
+    }
+  }
+
+  /* ===== 7. DATA LOADING ===== */
+  if (!isLocal) {
+    fetchFirestore('cardapio')
+      .then(function(data) { if (data) renderCategorias(data); else renderCategorias(cardapioData); })
+      .catch(function() { renderCategorias(cardapioData); });
+    fetchFirestore('promocoes')
+      .then(function(data) { if (data) renderPromocoes(data); else renderPromocoes(promocoesData); })
+      .catch(function() { renderPromocoes(promocoesData); });
+  } else {
+    renderCategorias(cardapioData);
+    renderPromocoes(promocoesData);
+  }
+
+  /* ===== 8. LAZY LOAD GOOGLE MAPS ===== */
+  var mapContainer = document.getElementById('mapContainer');
+  if (mapContainer && 'IntersectionObserver' in window) {
+    var mapObserver = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var iframe = document.createElement('iframe');
+          iframe.src = 'https://maps.google.com/maps?q=Av.+Paulo+Roberto+Scandar+215+Taquaritinga+SP&output=embed';
+          iframe.width = '100%';
+          iframe.height = '100%';
+          iframe.style.border = 'none';
+          iframe.loading = 'lazy';
+          iframe.allowFullscreen = true;
+          mapContainer.appendChild(iframe);
+          observer.unobserve(mapContainer);
+        }
+      });
+    }, { rootMargin: '200px' });
+    mapObserver.observe(mapContainer);
+  }
+
+  /* ===== 9. SCROLL HIDE/SHOW NAV ===== */
+  var nav = document.getElementById('nav');
+  if (nav) {
+    nav.style.transition = 'transform 0.3s ease';
+    var lastScrollY = 0;
+    window.addEventListener('scroll', function() {
+      var currentScrollY = window.scrollY || window.pageYOffset;
+      if (currentScrollY > 80 && currentScrollY > lastScrollY) {
+        nav.style.transform = 'translateY(-100%)';
+      } else {
+        nav.style.transform = 'translateY(0)';
+      }
+      lastScrollY = currentScrollY;
+    }, { passive: true });
+  }
+
+})();
+</script>
 </body>
 </html>
