@@ -10,30 +10,30 @@ var cardapioData = [
       {
         "titulo": "Panquecas Salgadas",
         "itens": [
-          { "nome": "Panqueca - Calábria", "preco": 26.99, "destaque": true },
-          { "nome": "Panqueca - Don Calabrese", "preco": 26.99 },
-          { "nome": "Panqueca - Carijó", "preco": 26.99 },
-          { "nome": "Panqueca - Cremily", "preco": 26.99 },
-          { "nome": "Panqueca - Speziato", "preco": 26.99 },
+          { "nome": "Panqueca - Calábria", "preco": 26.99, "destaque": true, "desc": "Calabresa acebolada com molho especial da casa" },
+          { "nome": "Panqueca - Don Calabrese", "preco": 26.99, "desc": "Calabresa, milho, catupiry e molho especial" },
+          { "nome": "Panqueca - Carijó", "preco": 26.99, "desc": "Frango desfiado com milho e catupiry" },
+          { "nome": "Panqueca - Cremily", "preco": 26.99, "desc": "Presunto e queijo com molho branco cremoso" },
+          { "nome": "Panqueca - Speziato", "preco": 26.99, "desc": "Calabresa com tempero especial italiano" },
           { "nome": "Panqueca - Milho", "preco": 26.99 },
-          { "nome": "Panqueca Da Nonna", "preco": 27.99 },
-          { "nome": "Panqueca Mamma Mia", "preco": 27.99 },
-          { "nome": "Panqueca - Da Laura", "preco": 28.99 },
+          { "nome": "Panqueca Da Nonna", "preco": 27.99, "desc": "Receita tradicional da casa com recheio especial" },
+          { "nome": "Panqueca Mamma Mia", "preco": 27.99, "desc": "Frango, bacon, milho e catupiry" },
+          { "nome": "Panqueca - Da Laura", "preco": 28.99, "desc": "Carne moída temperada com ervas finas" },
           { "nome": "Panqueca - Palmito", "preco": 28.99 },
           { "nome": "Panqueca - Peito de Peru", "preco": 28.99 },
           { "nome": "Panqueca - Presunto", "preco": 28.99 },
-          { "nome": "Panqueca - Canadense", "preco": 29.99 },
-          { "nome": "Panqueca - Don Pig", "preco": 29.99 },
+          { "nome": "Panqueca - Canadense", "preco": 29.99, "desc": "Peito de peru, queijo e molho branco" },
+          { "nome": "Panqueca - Don Pig", "preco": 29.99, "desc": "Lombo, bacon e catupiry" },
           { "nome": "Panqueca - Atum", "preco": 30.99 },
           { "nome": "Panqueca - Barbecue", "preco": 30.99 },
-          { "nome": "Panqueca - Baronesa", "preco": 30.99 },
+          { "nome": "Panqueca - Baronesa", "preco": 30.99, "desc": "Carne seca desfiada com catupiry" },
           { "nome": "Panqueca - Brócolis", "preco": 30.99 },
-          { "nome": "Panqueca - Don Corleone", "preco": 30.99 },
-          { "nome": "Panqueca - Don Onofre", "preco": 30.99 },
-          { "nome": "Panqueca - Du Chef", "preco": 30.99 },
-          { "nome": "Panqueca - Medalhão", "preco": 30.99 },
+          { "nome": "Panqueca - Don Corleone", "preco": 30.99, "desc": "Carne moída, bacon, queijo e molho especial" },
+          { "nome": "Panqueca - Don Onofre", "preco": 30.99, "desc": "Frango, palmito e catupiry" },
+          { "nome": "Panqueca - Du Chef", "preco": 30.99, "desc": "Criação especial do Chef Calabrese" },
+          { "nome": "Panqueca - Medalhão", "preco": 30.99, "desc": "Medalhão de carne com molho madeira" },
           { "nome": "Panqueca - 4 Queijos", "preco": 32.99 },
-          { "nome": "Panqueca - Portuguesa", "preco": 32.99 },
+          { "nome": "Panqueca - Portuguesa", "preco": 32.99, "desc": "Presunto, queijo, ovo, ervilha e azeitona" },
           { "nome": "Panqueca - 5 Queijos", "preco": 33.99 }
         ]
       }
@@ -48,8 +48,8 @@ var cardapioData = [
         "titulo": "Panquecas Doces",
         "itens": [
           { "nome": "Panqueca - Chocolate", "preco": 24.99 },
-          { "nome": "Panqueca - La Creme", "preco": 25.99, "destaque": true },
-          { "nome": "Panqueca - Romeu e Julieta", "preco": 25.99 },
+          { "nome": "Panqueca - La Creme", "preco": 25.99, "destaque": true, "desc": "Creme de baunilha com calda especial" },
+          { "nome": "Panqueca - Romeu e Julieta", "preco": 25.99, "desc": "Goiabada com queijo cremoso" },
           { "nome": "Trufas", "preco": 7.00 }
         ]
       }
@@ -88,12 +88,12 @@ var cardapioData = [
           { "nome": "X Bacon", "preco": 14.80 },
           { "nome": "X Egg", "preco": 14.50 },
           { "nome": "X Salada", "preco": 15.00 },
-          { "nome": "Pé de Pano", "preco": 15.50 },
+          { "nome": "Pé de Pano", "preco": 15.50, "desc": "Lanche especial da casa com ingredientes secretos" },
           { "nome": "X Salada Bacon", "preco": 15.50 },
           { "nome": "X Bacon Egg", "preco": 15.80 },
           { "nome": "X Burguer Duplo", "preco": 16.00 },
           { "nome": "X Salada Bacon Egg", "preco": 16.50 },
-          { "nome": "Mimosa", "preco": 16.50, "destaque": true }
+          { "nome": "Mimosa", "preco": 16.50, "destaque": true, "desc": "Hambúrguer com cheddar cremoso, cebola caramelizada e molho especial" }
         ]
       }
     ]
@@ -106,14 +106,14 @@ var cardapioData = [
       {
         "titulo": "Lanches de Frango",
         "itens": [
-          { "nome": "Marylou", "preco": 14.80 },
+          { "nome": "Marylou", "preco": 14.80, "desc": "Frango empanado com salada e molho especial" },
           { "nome": "X Frango", "preco": 15.80 },
           { "nome": "X Frango Egg", "preco": 15.80 },
           { "nome": "X Frango Salada", "preco": 15.99 },
           { "nome": "X Frango Bacon", "preco": 16.50 },
           { "nome": "X Frango Salada Bacon", "preco": 16.99 },
           { "nome": "X Frango Bacon Egg", "preco": 17.00 },
-          { "nome": "Big Bird", "preco": 17.30, "destaque": true },
+          { "nome": "Big Bird", "preco": 17.30, "destaque": true, "desc": "Frango duplo com todos os acompanhamentos" },
           { "nome": "X Frango Duplo", "preco": 18.00 },
           { "nome": "X Frango Salada Bacon Egg", "preco": 18.50 }
         ]

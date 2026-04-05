@@ -11,7 +11,36 @@
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pt_BR">
   <meta property="og:url" content="https://panquecacalabrese.com.br">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23C41E24'/><text x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-family='sans-serif' font-weight='bold' font-size='13' fill='white'>PC</text></svg>">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Panqueca Calabrese",
+    "image": "logo.png",
+    "servesCuisine": ["Panquecas", "Massas", "Lanches", "Delivery"],
+    "priceRange": "$$",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Av. Paulo Roberto Scandar, 215 - Bela Vista",
+      "addressLocality": "Taquaritinga",
+      "addressRegion": "SP",
+      "postalCode": "15900-001",
+      "addressCountry": "BR"
+    },
+    "telephone": "+55-16-99733-0681",
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "18:00",
+      "closes": "23:30"
+    },
+    "url": "https://panquecacalabrese.com.br",
+    "sameAs": [
+      "https://www.instagram.com/panqueca.calabrese/"
+    ]
+  }
+  </script>
+  <link rel="icon" type="image/png" href="logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -1141,6 +1170,77 @@
     .launch-card--highlight h3 {
       color: #e040fb;
     }
+
+    /* ===== RODÍZIO ===== */
+    .rodizio {
+      padding: 60px 40px;
+      background: linear-gradient(135deg, #2a1a00 0%, #1a0a0a 100%);
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+    .rodizio::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, rgba(255,214,0,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .rodizio-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .rodizio-price {
+      font-family: var(--font-display);
+      font-size: clamp(56px, 10vw, 80px);
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 8px;
+      text-shadow: 0 4px 20px rgba(255,214,0,0.3);
+    }
+    .rodizio-label {
+      font-family: var(--font-display);
+      font-size: clamp(24px, 4vw, 36px);
+      letter-spacing: 2px;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .rodizio-desc {
+      font-size: 15px;
+      color: var(--text-muted);
+      margin-bottom: 28px;
+      line-height: 1.6;
+    }
+    .rodizio-tag {
+      display: inline-block;
+      background: rgba(255,214,0,0.12);
+      border: 1px solid rgba(255,214,0,0.3);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 6px 18px;
+      border-radius: 100px;
+      margin-bottom: 20px;
+    }
+
+    /* ===== OPEN/CLOSED STATUS ===== */
+    .status-open { color: #4CAF50; font-weight: 600; }
+    .status-closed { color: #ef5350; font-weight: 600; }
+
+    /* ===== SCROLL REVEAL ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
   </style>
 </head>
 <body>
@@ -1181,7 +1281,7 @@
       <a href="https://wa.me/5516997330681" target="_blank" rel="noopener" class="btn btn--whatsapp">📱 Pedir no WhatsApp</a>
       <a href="https://www.instagram.com/panqueca.calabrese/" target="_blank" rel="noopener" class="btn btn--outline">📸 Ver Instagram</a>
     </div>
-    <p class="hero-hours">Aberto todos os dias · <strong>18h às 23h30</strong></p>
+    <p class="hero-hours"><span id="openStatus"></span> · <strong>18h às 23h30</strong></p>
     <div class="hero-promo" id="heroPromo">
       <div id="promoContent"></div>
     </div>
@@ -1190,7 +1290,7 @@
 
 <!-- LANÇAMENTO -->
 <section class="launch">
-  <div class="launch-inner">
+  <div class="launch-inner reveal">
     <div class="launch-badge">🔥 Novidade em Taquaritinga</div>
     <h2 class="launch-title">Explosão de <span>Açaí</span> chegando!</h2>
     <p class="launch-sub">A Panqueca Calabrese é muito mais que panquecas. Agora com açaí, milk shake, sorvetes e uma explosão de sabores que Taquaritinga nunca viu!</p>
@@ -1217,9 +1317,20 @@
   </div>
 </section>
 
+<!-- RODÍZIO -->
+<section class="rodizio">
+  <div class="rodizio-inner reveal">
+    <div class="rodizio-tag">🔥 Especial da Casa</div>
+    <div class="rodizio-label">RODÍZIO DE PANQUECAS</div>
+    <div class="rodizio-price">R$ 49,90</div>
+    <p class="rodizio-desc">Por pessoa. Panquecas à vontade com variedade de recheios. Reserve sua mesa agora!</p>
+    <a href="https://wa.me/5516997330681?text=Quero%20reservar%20mesa%20para%20o%20rod%C3%ADzio!" target="_blank" rel="noopener" class="btn btn--accent">📞 Reservar Mesa</a>
+  </div>
+</section>
+
 <main>
 
-<section class="about" id="sobre">
+<section class="about reveal" id="sobre">
   <p class="section-label">Quem Somos</p>
   <h2 class="section-title">Muito mais que panquecas. <span>É Calabrese!</span></h2>
   <p>A Panqueca Calabrese é referência em Taquaritinga quando o assunto é sabor, variedade e praticidade. Nosso cardápio vai muito além das panquecas — tem massas, lanches, risoto, porções, açaí, milk shake, sorvetes e muito mais. Tudo feito pra matar sua fome de verdade!</p>
@@ -1250,32 +1361,32 @@
   <p class="section-label">Por que pedir na Panqueca Calabrese?</p>
   <h2 class="section-title">Sabor, variedade e praticidade</h2>
   <div class="diff-grid">
-    <div class="diff-card">
+    <div class="diff-card reveal">
       <div class="diff-icon">📋</div>
       <div class="diff-title">Cardápio Variado</div>
       <div class="diff-text">Mais de 10 categorias: panquecas, massas, lanches, risoto, porções e muito mais. Tem opção pra todo tipo de fome.</div>
     </div>
-    <div class="diff-card">
+    <div class="diff-card reveal">
       <div class="diff-icon">📱</div>
       <div class="diff-title">Pedido Fácil</div>
       <div class="diff-text">Escolha pelo cardápio digital e peça direto no WhatsApp. Sem complicação, sem cadastro, sem app.</div>
     </div>
-    <div class="diff-card">
+    <div class="diff-card reveal">
       <div class="diff-icon">🔥</div>
       <div class="diff-title">Sabor Marcante</div>
       <div class="diff-text">Comida feita com capricho, visual que dá fome e gosto que faz voltar. Qualidade que você sente na primeira garfada.</div>
     </div>
-    <div class="diff-card">
+    <div class="diff-card reveal">
       <div class="diff-icon">📍</div>
       <div class="diff-title">Referência Local</div>
       <div class="diff-text">Marca conhecida em Taquaritinga. Presença forte no Instagram e reconhecida por quem é da cidade.</div>
     </div>
-    <div class="diff-card">
+    <div class="diff-card reveal">
       <div class="diff-icon">🕐</div>
       <div class="diff-title">Todos os Dias</div>
       <div class="diff-text">Aberto de segunda a domingo, das 18h às 23h30. Sempre pronto quando bater a fome.</div>
     </div>
-    <div class="diff-card">
+    <div class="diff-card reveal">
       <div class="diff-icon">🏍️</div>
       <div class="diff-title">Delivery Prático</div>
       <div class="diff-text">Receba na sua casa com rapidez. Peça pelo WhatsApp e acompanhe seu pedido sem estresse.</div>
@@ -1290,17 +1401,17 @@
     <p class="section-label">Presença & Credibilidade</p>
     <h2 class="section-title">Marca presente no dia a dia de Taquaritinga</h2>
     <div class="social-cards">
-      <div class="social-card">
+      <div class="social-card reveal">
         <div class="social-card-icon">📸</div>
         <h3>Presença no Instagram</h3>
-        <p>Acompanhe novidades, promoções e pratos no @panqueca.calabrese. Conteúdo real, comida de verdade.</p>
+        <p><strong style="color:var(--accent)">4.800+ seguidores</strong> acompanham novidades, promoções e pratos no @panqueca.calabrese. Conteúdo real, comida de verdade.</p>
       </div>
-      <div class="social-card">
+      <div class="social-card reveal">
         <div class="social-card-icon">💬</div>
         <h3>Contato Direto</h3>
         <p>Atendimento rápido e pessoal pelo WhatsApp. Tire dúvidas, faça pedidos e receba atualizações.</p>
       </div>
-      <div class="social-card">
+      <div class="social-card reveal">
         <div class="social-card-icon">⭐</div>
         <h3>Reconhecimento Local</h3>
         <p>Cardápio variado para diferentes gostos. Opção de referência pra quem busca sabor em Taquaritinga.</p>
@@ -1310,7 +1421,7 @@
 </section>
 
 <section class="cta-section">
-  <div class="cta-inner">
+  <div class="cta-inner reveal">
     <p class="section-label section-label--gold">Bateu a fome?</p>
     <h2 class="section-title">Faça seu <span>pedido</span> agora!</h2>
     <p class="cta-sub">Escolha seu favorito no cardápio digital e peça pelo WhatsApp. Sabor, praticidade e qualidade direto na sua porta!</p>
@@ -1415,6 +1526,7 @@
     <div class="menu-modal-body" id="modalBody"></div>
     <div class="menu-modal-footer">
       <a href="https://wa.me/5516997330681?text=Quero%20fazer%20um%20pedido!" target="_blank" rel="noopener" class="btn btn--whatsapp">📱 Pedir no WhatsApp</a>
+      <a href="https://panquecacalabresetaquaritinga.eatfood.app/category" target="_blank" rel="noopener" class="btn btn--outline" style="margin-top:10px">📋 Pedir pelo Cardápio Digital</a>
     </div>
   </div>
 </div>
@@ -1425,6 +1537,20 @@
 <script src="promocoes.js"></script>
 <script>
 (function() {
+
+  /* ===== SCROLL REVEAL ===== */
+  var revealObserver = null;
+  if ('IntersectionObserver' in window) {
+    revealObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(function(el) { revealObserver.observe(el); });
+  }
 
   /* ===== 1. FIRESTORE CONFIG ===== */
   var FIRESTORE_PROJECT = 'clientes-admin-a2258';
@@ -1489,13 +1615,17 @@
       var icon = tab.icon || defaultIcons[tab.id] || '🍽️';
       var label = tab.label || tab.id;
       var desc = defaultDescs[tab.id] || '';
-      html += '<div class="cat-card" data-cat-index="' + i + '" onclick="openCatModal(' + i + ')">';
+      html += '<div class="cat-card reveal" data-cat-index="' + i + '" onclick="openCatModal(' + i + ')">';
       html += '<div class="cat-icon">' + icon + '</div>';
       html += '<div class="cat-name">' + label + '</div>';
       html += '<div class="cat-desc">' + desc + '</div>';
       html += '</div>';
     }
     grid.innerHTML = html;
+    // Re-observe new reveal elements
+    if ('IntersectionObserver' in window && revealObserver) {
+      grid.querySelectorAll('.reveal').forEach(function(el) { revealObserver.observe(el); });
+    }
   }
 
   /* ===== 5b. MODAL DE CATEGORIA ===== */
@@ -1524,6 +1654,7 @@
           html += '<div class="menu-item">';
           html += '<span class="menu-item-name">' + item.nome;
           if (item.destaque) html += '<span class="menu-item-badge">Destaque</span>';
+          if (item.desc) html += '<br><span style="font-size:12px;color:rgba(255,255,255,0.45);font-style:italic">' + item.desc + '</span>';
           html += '</span>';
           if (item.preco) {
             var p = Number(item.preco);
@@ -1632,7 +1763,27 @@
     mapObserver.observe(mapContainer);
   }
 
-  /* ===== 9. SCROLL HIDE/SHOW NAV ===== */
+  /* ===== 9. OPEN/CLOSED STATUS ===== */
+  function updateOpenStatus() {
+    var el = document.getElementById('openStatus');
+    if (!el) return;
+    var now = new Date();
+    var h = now.getHours();
+    var m = now.getMinutes();
+    var mins = h * 60 + m;
+    var open = mins >= 1080 && mins < 1410; // 18:00 = 1080, 23:30 = 1410
+    if (open) {
+      el.textContent = '🟢 Aberto agora';
+      el.className = 'status-open';
+    } else {
+      el.textContent = '🔴 Fechado · Abre às 18h';
+      el.className = 'status-closed';
+    }
+  }
+  updateOpenStatus();
+  setInterval(updateOpenStatus, 60000);
+
+  /* ===== 10. SCROLL HIDE/SHOW NAV ===== */
   var nav = document.getElementById('nav');
   if (nav) {
     nav.style.transition = 'transform 0.3s ease';
