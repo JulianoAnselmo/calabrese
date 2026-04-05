@@ -10,11 +10,31 @@ var cardapioData = [
       {
         "titulo": "Panquecas Salgadas",
         "itens": [
-          { "nome": "Calabresa", "desc": "Recheio de calabresa acebolada com molho especial da casa", "preco": 25.90, "destaque": true },
-          { "nome": "Frango com Catupiry", "desc": "Frango desfiado temperado com catupiry cremoso", "preco": 25.90 },
-          { "nome": "Carne Moída", "desc": "Carne moída temperada com ervas e especiarias", "preco": 25.90 },
-          { "nome": "Quatro Queijos", "desc": "Blend de muçarela, provolone, catupiry e parmesão", "preco": 27.90 },
-          { "nome": "Palmito", "desc": "Recheio cremoso de palmito com molho branco", "preco": 27.90 }
+          { "nome": "Panqueca - Calábria", "preco": 26.99, "destaque": true },
+          { "nome": "Panqueca - Don Calabrese", "preco": 26.99 },
+          { "nome": "Panqueca - Carijó", "preco": 26.99 },
+          { "nome": "Panqueca - Cremily", "preco": 26.99 },
+          { "nome": "Panqueca - Speziato", "preco": 26.99 },
+          { "nome": "Panqueca - Milho", "preco": 26.99 },
+          { "nome": "Panqueca Da Nonna", "preco": 27.99 },
+          { "nome": "Panqueca Mamma Mia", "preco": 27.99 },
+          { "nome": "Panqueca - Da Laura", "preco": 28.99 },
+          { "nome": "Panqueca - Palmito", "preco": 28.99 },
+          { "nome": "Panqueca - Peito de Peru", "preco": 28.99 },
+          { "nome": "Panqueca - Presunto", "preco": 28.99 },
+          { "nome": "Panqueca - Canadense", "preco": 29.99 },
+          { "nome": "Panqueca - Don Pig", "preco": 29.99 },
+          { "nome": "Panqueca - Atum", "preco": 30.99 },
+          { "nome": "Panqueca - Barbecue", "preco": 30.99 },
+          { "nome": "Panqueca - Baronesa", "preco": 30.99 },
+          { "nome": "Panqueca - Brócolis", "preco": 30.99 },
+          { "nome": "Panqueca - Don Corleone", "preco": 30.99 },
+          { "nome": "Panqueca - Don Onofre", "preco": 30.99 },
+          { "nome": "Panqueca - Du Chef", "preco": 30.99 },
+          { "nome": "Panqueca - Medalhão", "preco": 30.99 },
+          { "nome": "Panqueca - 4 Queijos", "preco": 32.99 },
+          { "nome": "Panqueca - Portuguesa", "preco": 32.99 },
+          { "nome": "Panqueca - 5 Queijos", "preco": 33.99 }
         ]
       }
     ]
@@ -27,10 +47,10 @@ var cardapioData = [
       {
         "titulo": "Panquecas Doces",
         "itens": [
-          { "nome": "Chocolate", "desc": "Massa de panqueca com recheio generoso de chocolate", "preco": 22.90 },
-          { "nome": "Doce de Leite", "desc": "Recheio cremoso de doce de leite artesanal", "preco": 22.90 },
-          { "nome": "Morango com Chocolate", "desc": "Morangos frescos com calda de chocolate", "preco": 24.90, "destaque": true },
-          { "nome": "Banana com Canela", "desc": "Banana caramelizada com canela e açúcar", "preco": 22.90 }
+          { "nome": "Panqueca - Chocolate", "preco": 24.99 },
+          { "nome": "Panqueca - La Creme", "preco": 25.99, "destaque": true },
+          { "nome": "Panqueca - Romeu e Julieta", "preco": 25.99 },
+          { "nome": "Trufas", "preco": 7.00 }
         ]
       }
     ]
@@ -39,17 +59,7 @@ var cardapioData = [
     "id": "massas",
     "label": "Massas",
     "icon": "🍝",
-    "categorias": [
-      {
-        "titulo": "Massas",
-        "itens": [
-          { "nome": "Lasanha Bolonhesa", "desc": "Camadas de massa fresca com molho bolonhesa e queijo gratinado", "preco": 32.90, "destaque": true },
-          { "nome": "Lasanha Frango com Catupiry", "desc": "Frango desfiado com catupiry entre camadas de massa", "preco": 32.90 },
-          { "nome": "Nhoque ao Sugo", "desc": "Nhoque de batata artesanal com molho de tomate fresco", "preco": 28.90 },
-          { "nome": "Canelone de Carne", "desc": "Canelone recheado com carne temperada e molho especial", "preco": 30.90 }
-        ]
-      }
-    ]
+    "categorias": []
   },
   {
     "id": "macarrao-in-box",
@@ -59,10 +69,9 @@ var cardapioData = [
       {
         "titulo": "Macarrão in Box",
         "itens": [
-          { "nome": "Carbonara", "desc": "Macarrão ao molho carbonara cremoso com bacon", "preco": 24.90 },
-          { "nome": "Bolonhesa", "desc": "Macarrão com molho bolonhesa caseiro", "preco": 22.90 },
-          { "nome": "Alho e Óleo", "desc": "Macarrão no alho e óleo com toque de pimenta", "preco": 19.90 },
-          { "nome": "Quatro Queijos", "desc": "Macarrão ao molho cremoso de quatro queijos", "preco": 24.90 }
+          { "nome": "Macarrão c/ 3 Ingredientes", "preco": 29.99 },
+          { "nome": "Macarrão c/ 5 Ingredientes", "preco": 31.99, "destaque": true },
+          { "nome": "Macarrão c/ 8 Ingredientes", "preco": 33.99 }
         ]
       }
     ]
@@ -75,10 +84,16 @@ var cardapioData = [
       {
         "titulo": "Lanches de Carne",
         "itens": [
-          { "nome": "X-Burguer", "desc": "Hambúrguer artesanal, queijo, salada e molho especial", "preco": 22.90 },
-          { "nome": "X-Bacon", "desc": "Hambúrguer artesanal com bacon crocante e queijo", "preco": 25.90, "destaque": true },
-          { "nome": "X-Tudo", "desc": "Hambúrguer completo com todos os ingredientes", "preco": 28.90 },
-          { "nome": "X-Calabresa", "desc": "Hambúrguer com calabresa acebolada e queijo", "preco": 25.90 }
+          { "nome": "X Burguer", "preco": 14.50 },
+          { "nome": "X Bacon", "preco": 14.80 },
+          { "nome": "X Egg", "preco": 14.50 },
+          { "nome": "X Salada", "preco": 15.00 },
+          { "nome": "Pé de Pano", "preco": 15.50 },
+          { "nome": "X Salada Bacon", "preco": 15.50 },
+          { "nome": "X Bacon Egg", "preco": 15.80 },
+          { "nome": "X Burguer Duplo", "preco": 16.00 },
+          { "nome": "X Salada Bacon Egg", "preco": 16.50 },
+          { "nome": "Mimosa", "preco": 16.50, "destaque": true }
         ]
       }
     ]
@@ -91,9 +106,16 @@ var cardapioData = [
       {
         "titulo": "Lanches de Frango",
         "itens": [
-          { "nome": "Frango Crispy", "desc": "Filé de frango empanado crocante com salada e molho", "preco": 22.90 },
-          { "nome": "Frango com Catupiry", "desc": "Frango desfiado com catupiry no pão artesanal", "preco": 24.90 },
-          { "nome": "Frango Especial", "desc": "Frango grelhado com queijo, bacon e salada completa", "preco": 26.90, "destaque": true }
+          { "nome": "Marylou", "preco": 14.80 },
+          { "nome": "X Frango", "preco": 15.80 },
+          { "nome": "X Frango Egg", "preco": 15.80 },
+          { "nome": "X Frango Salada", "preco": 15.99 },
+          { "nome": "X Frango Bacon", "preco": 16.50 },
+          { "nome": "X Frango Salada Bacon", "preco": 16.99 },
+          { "nome": "X Frango Bacon Egg", "preco": 17.00 },
+          { "nome": "Big Bird", "preco": 17.30, "destaque": true },
+          { "nome": "X Frango Duplo", "preco": 18.00 },
+          { "nome": "X Frango Salada Bacon Egg", "preco": 18.50 }
         ]
       }
     ]
@@ -106,9 +128,8 @@ var cardapioData = [
       {
         "titulo": "Risoto",
         "itens": [
-          { "nome": "Risoto de Frango", "desc": "Risoto cremoso com frango desfiado e temperos especiais", "preco": 30.90 },
-          { "nome": "Risoto Calabresa", "desc": "Risoto com calabresa e toque defumado", "preco": 30.90, "destaque": true },
-          { "nome": "Risoto Quatro Queijos", "desc": "Risoto cremoso com blend de quatro queijos", "preco": 32.90 }
+          { "nome": "Risoto 4 Queijos", "preco": 39.99, "destaque": true },
+          { "nome": "Risoto Cabotiá com Carne Seca", "preco": 39.99 }
         ]
       }
     ]
@@ -119,12 +140,28 @@ var cardapioData = [
     "icon": "🍟",
     "categorias": [
       {
+        "titulo": "Espetos",
+        "itens": [
+          { "nome": "Espeto Queijo Coalho", "preco": 8.99 },
+          { "nome": "Espeto Frango", "preco": 8.99 },
+          { "nome": "Espeto Carne", "preco": 8.99 },
+          { "nome": "Espeto Linguiça", "preco": 8.99 },
+          { "nome": "Espeto Kafta", "preco": 8.99 }
+        ]
+      },
+      {
         "titulo": "Porções",
         "itens": [
-          { "nome": "Batata Frita", "desc": "Porção generosa de batata frita crocante", "preco": 18.90 },
-          { "nome": "Calabresa Acebolada", "desc": "Porção de calabresa acebolada na chapa", "preco": 22.90 },
-          { "nome": "Frango a Passarinho", "desc": "Frango temperado e frito crocante", "preco": 24.90 },
-          { "nome": "Mandioca Frita", "desc": "Mandioca frita dourada e crocante", "preco": 18.90 }
+          { "nome": "Amendoim", "preco": 6.00 },
+          { "nome": "Pururuca", "preco": 19.00 },
+          { "nome": "Salame", "preco": 23.00 },
+          { "nome": "Calabresa Acebolada", "preco": 23.00 },
+          { "nome": "Carne", "preco": 39.50 },
+          { "nome": "Carne Acebolada", "preco": 42.00 },
+          { "nome": "Carne com Catupiry", "preco": 42.00 },
+          { "nome": "Carne Catupiry e Alho Frito", "preco": 44.00 },
+          { "nome": "Carne Catupiry e Bacon", "preco": 44.50 },
+          { "nome": "Carne com Parmesão", "preco": 47.50, "destaque": true }
         ]
       }
     ]
@@ -135,13 +172,59 @@ var cardapioData = [
     "icon": "🥤",
     "categorias": [
       {
-        "titulo": "Bebidas",
+        "titulo": "Águas e Refrigerantes",
         "itens": [
-          { "nome": "Refrigerante Lata", "desc": "Coca-Cola, Guaraná, Sprite", "preco": 6.00 },
-          { "nome": "Suco Natural", "desc": "Laranja, limão, maracujá", "preco": 8.90 },
-          { "nome": "Água Mineral", "desc": "Com ou sem gás", "preco": 4.00 },
-          { "nome": "Milk Shake", "desc": "Chocolate, morango ou ovomaltine", "preco": 16.90, "destaque": true },
-          { "nome": "Açaí", "desc": "Açaí cremoso com acompanhamentos", "preco": 18.90 }
+          { "nome": "Água sem Gás", "preco": 3.50 },
+          { "nome": "Água com Gás", "preco": 3.50 },
+          { "nome": "Água Tônica", "preco": 4.50 },
+          { "nome": "Coca Cola Lata", "preco": 5.50 },
+          { "nome": "Coca Cola Zero Lata", "preco": 5.50 },
+          { "nome": "Guaraná Lata Antártica", "preco": 5.50 },
+          { "nome": "Fanta Laranja Lata", "preco": 5.50 },
+          { "nome": "Fanta Uva Lata", "preco": 5.50 },
+          { "nome": "Sprite Lata", "preco": 5.50 },
+          { "nome": "H2O Limão", "preco": 7.00 },
+          { "nome": "H2O Limoneto", "preco": 7.00 },
+          { "nome": "Sprite Lemon Fresh 510ml", "preco": 7.00 }
+        ]
+      },
+      {
+        "titulo": "Sucos",
+        "itens": [
+          { "nome": "Suco Frutas Cítricas", "preco": 3.00 },
+          { "nome": "Suco Laranja com Acerola", "preco": 3.00 }
+        ]
+      },
+      {
+        "titulo": "Cervejas",
+        "itens": [
+          { "nome": "Cerveja Heineken Lata 0 Álcool", "preco": 6.00 },
+          { "nome": "Cerveja Malzbier Itaipava", "preco": 6.00 },
+          { "nome": "Cerveja Império Puro Malte", "preco": 7.49 },
+          { "nome": "Cerveja Império Lager", "preco": 7.49 },
+          { "nome": "Cerveja Antarctica Subzero", "preco": 7.50 },
+          { "nome": "Cerveja Amstel 600ml", "preco": 11.00 },
+          { "nome": "Cerveja Antártica", "preco": 12.00 },
+          { "nome": "Cerveja Skol", "preco": 13.00 },
+          { "nome": "Cerveja Brahma", "preco": 13.00 },
+          { "nome": "Cerveja Original 600ml", "preco": 13.00 },
+          { "nome": "Cerveja Heineken", "preco": 16.00 }
+        ]
+      },
+      {
+        "titulo": "Chopp e Drinks",
+        "itens": [
+          { "nome": "Chopp Império Puro Malte 350ml", "preco": 7.90 },
+          { "nome": "Chopp Império Puro Malte 500ml", "preco": 10.90 },
+          { "nome": "Vinho de Chopp Lata 473ml", "preco": 12.00 },
+          { "nome": "Caipirinha", "preco": 15.00 }
+        ]
+      },
+      {
+        "titulo": "Vinhos",
+        "itens": [
+          { "nome": "Vinho Taça", "preco": 10.00 },
+          { "nome": "Vinho Garrafa", "preco": 30.00 }
         ]
       }
     ]
@@ -150,14 +233,6 @@ var cardapioData = [
     "id": "diversos",
     "label": "Diversos",
     "icon": "✨",
-    "categorias": [
-      {
-        "titulo": "Diversos",
-        "itens": [
-          { "nome": "Marmitex P", "desc": "Marmitex tamanho pequeno com arroz, feijão e mistura", "preco": 15.90 },
-          { "nome": "Marmitex G", "desc": "Marmitex tamanho grande completo", "preco": 19.90 }
-        ]
-      }
-    ]
+    "categorias": []
   }
 ];
