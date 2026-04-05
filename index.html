@@ -934,6 +934,112 @@
       }
     }
 
+    /* ===== MENU MODAL ===== */
+    .menu-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 3000;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      overflow-y: auto;
+      padding: 20px;
+    }
+    .menu-modal.open { display: flex; align-items: flex-start; justify-content: center; }
+    .menu-modal-inner {
+      background: #1e1010;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px;
+      max-width: 600px;
+      width: 100%;
+      margin: 40px auto;
+      padding: 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .menu-modal-header {
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+      padding: 24px 28px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .menu-modal-header-icon { font-size: 36px; }
+    .menu-modal-header h2 {
+      font-family: var(--font-display);
+      font-size: 28px;
+      letter-spacing: 1px;
+      color: #fff;
+      flex: 1;
+    }
+    .menu-modal-close {
+      background: rgba(255,255,255,0.15);
+      border: none;
+      color: #fff;
+      font-size: 22px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+    .menu-modal-close:hover { background: rgba(255,255,255,0.25); }
+    .menu-modal-body { padding: 8px 0; }
+    .menu-cat-title {
+      font-family: var(--font-display);
+      font-size: 16px;
+      letter-spacing: 1px;
+      color: var(--accent);
+      padding: 16px 28px 8px;
+    }
+    .menu-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 28px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      transition: background 0.15s;
+    }
+    .menu-item:last-child { border-bottom: none; }
+    .menu-item:hover { background: rgba(255,255,255,0.03); }
+    .menu-item-name {
+      font-size: 14px;
+      color: rgba(255,255,255,0.85);
+      flex: 1;
+    }
+    .menu-item-badge {
+      display: inline-block;
+      background: rgba(255,214,0,0.15);
+      color: var(--accent);
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-left: 8px;
+      letter-spacing: 0.5px;
+    }
+    .menu-item-price {
+      font-family: var(--font-display);
+      font-size: 18px;
+      color: var(--accent);
+      white-space: nowrap;
+      margin-left: 16px;
+    }
+    .menu-modal-footer {
+      padding: 16px 28px 24px;
+      text-align: center;
+    }
+    .menu-empty {
+      padding: 40px 28px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
     /* ===== LAUNCH / NOVIDADES ===== */
     .launch {
       padding: 80px 40px;
@@ -1298,6 +1404,21 @@
   </div>
 </footer>
 
+<!-- MENU MODAL -->
+<div class="menu-modal" id="menuModal">
+  <div class="menu-modal-inner">
+    <div class="menu-modal-header">
+      <span class="menu-modal-header-icon" id="modalIcon"></span>
+      <h2 id="modalTitle"></h2>
+      <button class="menu-modal-close" onclick="document.getElementById('menuModal').classList.remove('open')" aria-label="Fechar">&times;</button>
+    </div>
+    <div class="menu-modal-body" id="modalBody"></div>
+    <div class="menu-modal-footer">
+      <a href="https://wa.me/5516997330681?text=Quero%20fazer%20um%20pedido!" target="_blank" rel="noopener" class="btn btn--whatsapp">📱 Pedir no WhatsApp</a>
+    </div>
+  </div>
+</div>
+
 <a href="https://wa.me/5516997330681" target="_blank" rel="noopener" class="whatsapp-float" title="Pedir no WhatsApp">💬</a>
 
 <script src="cardapio.js"></script>
@@ -1356,7 +1477,10 @@
   };
 
   /* ===== 5. RENDER CATEGORIAS ===== */
+  var currentCardapioData = null;
+
   function renderCategorias(data) {
+    currentCardapioData = data;
     var grid = document.getElementById('catGrid');
     if (!grid || !data || !data.length) return;
     var html = '';
@@ -1365,14 +1489,83 @@
       var icon = tab.icon || defaultIcons[tab.id] || '🍽️';
       var label = tab.label || tab.id;
       var desc = defaultDescs[tab.id] || '';
-      html += '<a class="cat-card" href="https://panquecacalabresetaquaritinga.eatfood.app/category" target="_blank" rel="noopener">';
+      html += '<div class="cat-card" data-cat-index="' + i + '" onclick="openCatModal(' + i + ')">';
       html += '<div class="cat-icon">' + icon + '</div>';
       html += '<div class="cat-name">' + label + '</div>';
       html += '<div class="cat-desc">' + desc + '</div>';
-      html += '</a>';
+      html += '</div>';
     }
     grid.innerHTML = html;
   }
+
+  /* ===== 5b. MODAL DE CATEGORIA ===== */
+  window.openCatModal = function(index) {
+    var tab = currentCardapioData[index];
+    if (!tab) return;
+
+    var icon = tab.icon || defaultIcons[tab.id] || '🍽️';
+    document.getElementById('modalIcon').textContent = icon;
+    document.getElementById('modalTitle').textContent = tab.label || tab.id;
+
+    var body = document.getElementById('modalBody');
+    var html = '';
+
+    if (!tab.categorias || !tab.categorias.length || (tab.categorias.length === 1 && (!tab.categorias[0].itens || !tab.categorias[0].itens.length))) {
+      html = '<div class="menu-empty">Em breve! Acompanhe as novidades pelo Instagram.</div>';
+    } else {
+      for (var c = 0; c < tab.categorias.length; c++) {
+        var cat = tab.categorias[c];
+        if (!cat.itens || !cat.itens.length) continue;
+        if (tab.categorias.length > 1) {
+          html += '<div class="menu-cat-title">' + cat.titulo + '</div>';
+        }
+        for (var j = 0; j < cat.itens.length; j++) {
+          var item = cat.itens[j];
+          html += '<div class="menu-item">';
+          html += '<span class="menu-item-name">' + item.nome;
+          if (item.destaque) html += '<span class="menu-item-badge">Destaque</span>';
+          html += '</span>';
+          if (item.preco) {
+            var p = Number(item.preco);
+            var formatted = p.toFixed(2).replace('.', ',');
+            html += '<span class="menu-item-price">R$ ' + formatted + '</span>';
+          }
+          html += '</div>';
+        }
+        if (cat.nota) {
+          html += '<div style="padding:8px 28px 12px;font-size:12px;color:rgba(255,255,255,0.4);font-style:italic">' + cat.nota + '</div>';
+        }
+      }
+    }
+
+    body.innerHTML = html;
+    document.getElementById('menuModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  };
+
+  // Close modal on backdrop click
+  document.getElementById('menuModal').addEventListener('click', function(e) {
+    if (e.target === this) {
+      this.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  });
+
+  // Close modal on Escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      var modal = document.getElementById('menuModal');
+      if (modal.classList.contains('open')) {
+        modal.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+    }
+  });
+
+  // Also fix the close button to restore scroll
+  document.querySelector('.menu-modal-close').addEventListener('click', function() {
+    document.body.style.overflow = '';
+  });
 
   /* ===== 6. RENDER PROMOÇÕES ===== */
   function renderPromocoes(data) {
