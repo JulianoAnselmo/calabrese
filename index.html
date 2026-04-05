@@ -928,6 +928,112 @@
       .cat-grid {
         grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
       }
+
+      .launch-cards {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ===== LAUNCH / NOVIDADES ===== */
+    .launch {
+      padding: 80px 40px;
+      background: linear-gradient(135deg, #2a0a2a 0%, #1a0a1a 40%, #1a0a0a 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .launch::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 30% 50%, rgba(128,0,128,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse at 70% 30%, rgba(211,47,47,0.08) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .launch-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+    .launch-badge {
+      display: inline-block;
+      background: rgba(128,0,128,0.25);
+      border: 1px solid rgba(180,0,180,0.4);
+      color: #e040fb;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 6px 18px;
+      border-radius: 100px;
+      margin-bottom: 16px;
+      animation: pulse-badge 2s ease-in-out infinite;
+    }
+    @keyframes pulse-badge {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(224,64,251,0.3); }
+      50% { box-shadow: 0 0 20px 4px rgba(224,64,251,0.15); }
+    }
+    .launch-title {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 5vw, 52px);
+      letter-spacing: 2px;
+      line-height: 1.1;
+      margin-bottom: 12px;
+      color: #fff;
+    }
+    .launch-title span {
+      color: #e040fb;
+    }
+    .launch-sub {
+      font-size: 16px;
+      color: rgba(255,255,255,0.65);
+      max-width: 600px;
+      margin: 0 auto 40px;
+      line-height: 1.7;
+    }
+    .launch-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-bottom: 36px;
+    }
+    .launch-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(180,0,180,0.2);
+      border-radius: 16px;
+      padding: 32px 24px;
+      text-align: center;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .launch-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(224,64,251,0.4);
+    }
+    .launch-card-icon {
+      font-size: 48px;
+      margin-bottom: 16px;
+      line-height: 1;
+    }
+    .launch-card h3 {
+      font-family: var(--font-display);
+      font-size: 22px;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+      color: #fff;
+    }
+    .launch-card p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.6;
+    }
+    .launch-card--highlight {
+      border-color: rgba(224,64,251,0.4);
+      background: rgba(128,0,128,0.1);
+    }
+    .launch-card--highlight h3 {
+      color: #e040fb;
     }
   </style>
 </head>
@@ -973,6 +1079,35 @@
     <div class="hero-promo" id="heroPromo">
       <div id="promoContent"></div>
     </div>
+  </div>
+</section>
+
+<!-- LANÇAMENTO -->
+<section class="launch">
+  <div class="launch-inner">
+    <div class="launch-badge">🔥 Novidade em Taquaritinga</div>
+    <h2 class="launch-title">Explosão de <span>Açaí</span> chegando!</h2>
+    <p class="launch-sub">A Panqueca Calabrese é muito mais que panquecas. Agora com açaí, milk shake, sorvetes e uma explosão de sabores que Taquaritinga nunca viu!</p>
+
+    <div class="launch-cards">
+      <div class="launch-card launch-card--highlight">
+        <div class="launch-card-icon">🍇</div>
+        <h3>Açaí</h3>
+        <p>Açaí cremoso com frutas frescas, granola e acompanhamentos. A explosão de sabor que estava faltando!</p>
+      </div>
+      <div class="launch-card">
+        <div class="launch-card-icon">🥤</div>
+        <h3>Milk Shake</h3>
+        <p>Milk shakes cremosos nos mais variados sabores. Chocolate, morango, ovomaltine e muito mais!</p>
+      </div>
+      <div class="launch-card">
+        <div class="launch-card-icon">🍦</div>
+        <h3>Sorvetes</h3>
+        <p>Sorvetes e casquinhas pra refrescar. A sobremesa perfeita depois do seu pedido favorito!</p>
+      </div>
+    </div>
+
+    <a href="https://wa.me/5516997330681?text=Quero%20saber%20sobre%20o%20a%C3%A7a%C3%AD!" target="_blank" rel="noopener" class="btn btn--accent">🍇 Quero experimentar o Açaí!</a>
   </div>
 </section>
 
