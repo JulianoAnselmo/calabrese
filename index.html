@@ -868,6 +868,46 @@
   </style>
 </head>
 <body>
+<header>
+  <nav class="nav" id="nav">
+    <div class="nav-brand">PANQUECA <span>CALABRESE</span></div>
+    <ul class="nav-links">
+      <li><a href="#inicio">Início</a></li>
+      <li><a href="#cardapio">Cardápio</a></li>
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+    <button class="nav-toggle" onclick="document.getElementById('navMobile').classList.add('open')" aria-label="Abrir menu">&#9776;</button>
+  </nav>
+  <div class="nav-mobile" id="navMobile">
+    <button class="nav-mobile-close" onclick="document.getElementById('navMobile').classList.remove('open')" aria-label="Fechar menu">&times;</button>
+    <a href="#inicio" onclick="document.getElementById('navMobile').classList.remove('open')">Início</a>
+    <a href="#cardapio" onclick="document.getElementById('navMobile').classList.remove('open')">Cardápio</a>
+    <a href="#sobre" onclick="document.getElementById('navMobile').classList.remove('open')">Sobre</a>
+    <a href="#contato" onclick="document.getElementById('navMobile').classList.remove('open')">Contato</a>
+  </div>
+</header>
+
+<section class="hero" id="inicio">
+  <div class="hero-deco hero-deco--1"></div>
+  <div class="hero-deco hero-deco--2"></div>
+  <div class="hero-content">
+    <div class="hero-badge">📍 Taquaritinga - SP</div>
+    <h1 class="hero-title">PANQUECA <span>CALABRESE</span></h1>
+    <p class="hero-headline">O sabor que Taquaritinga já conhece</p>
+    <p class="hero-sub">Panquecas, massas, lanches, risoto e muito mais. Peça pelo WhatsApp e receba no conforto da sua casa.</p>
+    <div class="hero-buttons">
+      <a href="https://panquecacalabresetaquaritinga.eatfood.app/category" target="_blank" rel="noopener" class="btn btn--primary">🍽️ Ver Cardápio</a>
+      <a href="https://wa.me/5516997330681" target="_blank" rel="noopener" class="btn btn--whatsapp">📱 Pedir no WhatsApp</a>
+      <a href="https://www.instagram.com/panqueca.calabrese/" target="_blank" rel="noopener" class="btn btn--outline">📸 Ver Instagram</a>
+    </div>
+    <p class="hero-hours">Aberto todos os dias · <strong>18h às 23h30</strong></p>
+    <div class="hero-promo" id="heroPromo">
+      <div id="promoContent"></div>
+    </div>
+  </div>
+</section>
+
 <!-- Sections added in subsequent tasks -->
 <script src="cardapio.js"></script>
 <script src="promocoes.js"></script>
