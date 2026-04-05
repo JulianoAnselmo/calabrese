@@ -18,15 +18,16 @@
   <style>
     /* ===== CSS CUSTOM PROPERTIES ===== */
     :root {
-      --primary: #C41E24;
-      --primary-dark: #9A1219;
-      --accent: #D4740A;
-      --gold: #f0c27a;
+      --primary: #D32F2F;
+      --primary-dark: #B71C1C;
+      --accent: #FFD600;
+      --gold: #FFC107;
+      --italian-green: #2E7D32;
       --bg-dark: #1a0a0a;
-      --bg-card: rgba(255,255,255,0.04);
-      --border: rgba(255,255,255,0.07);
+      --bg-card: rgba(255,255,255,0.06);
+      --border: rgba(255,255,255,0.10);
       --text: #ffffff;
-      --text-muted: rgba(255,255,255,0.6);
+      --text-muted: rgba(255,255,255,0.7);
       --whatsapp: #25D366;
       --font-display: 'Bebas Neue', sans-serif;
       --font-body: 'Inter', sans-serif;
@@ -93,7 +94,7 @@
     }
 
     .section-title span {
-      color: var(--primary);
+      color: var(--accent);
     }
 
     /* ===== BUTTONS ===== */
@@ -149,6 +150,74 @@
       box-shadow: 0 8px 24px rgba(255,255,255,0.08);
     }
 
+    /* ===== ACCENT BUTTON ===== */
+    .btn--accent {
+      background: var(--accent);
+      color: #1a0a0a;
+      font-weight: 700;
+    }
+    .btn--accent:hover {
+      background: var(--gold);
+      box-shadow: 0 8px 24px rgba(255,214,0,0.3);
+    }
+
+    /* ===== HERO LOGO ===== */
+    .hero-logo {
+      width: 160px;
+      height: 160px;
+      margin: 0 auto 24px;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 8px 40px rgba(211,47,47,0.3);
+    }
+    .hero-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* ===== NAV LOGO ===== */
+    .nav-logo {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-right: 10px;
+      flex-shrink: 0;
+    }
+    .nav-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .nav-brand {
+      display: flex;
+      align-items: center;
+    }
+    .nav-brand-text {
+      font-family: var(--font-display);
+      font-size: 22px;
+      letter-spacing: 2px;
+      color: var(--text);
+    }
+    .nav-brand-text span {
+      color: var(--accent);
+    }
+
+    /* ===== FOOTER LOGO ===== */
+    .footer-logo {
+      width: 48px;
+      height: 48px;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 12px;
+    }
+    .footer-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
     /* ===== DIVIDER ===== */
     .divider {
       width: 100%;
@@ -172,18 +241,12 @@
       background: rgba(26, 10, 10, 0.92);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--primary);
+      border-bottom: 1px solid rgba(211,47,47,0.5);
     }
 
     .nav-brand {
-      font-family: var(--font-display);
-      font-size: 22px;
-      letter-spacing: 2px;
-      color: var(--text);
-    }
-
-    .nav-brand span {
-      color: var(--primary);
+      display: flex;
+      align-items: center;
     }
 
     .nav-links {
@@ -263,8 +326,8 @@
       align-items: center;
       justify-content: center;
       padding: 100px 40px 80px;
-      background: radial-gradient(ellipse at 60% 40%, rgba(196,30,36,0.18) 0%, transparent 60%),
-                  radial-gradient(ellipse at 20% 80%, rgba(212,116,10,0.10) 0%, transparent 50%),
+      background: radial-gradient(ellipse at 60% 40%, rgba(211,47,47,0.20) 0%, transparent 60%),
+                  radial-gradient(ellipse at 20% 80%, rgba(255,214,0,0.08) 0%, transparent 50%),
                   var(--bg-dark);
       overflow: hidden;
       text-align: center;
@@ -361,8 +424,8 @@
     .hero-promo {
       display: none;
       margin-top: 20px;
-      background: rgba(212,116,10,0.12);
-      border: 1px solid rgba(212,116,10,0.3);
+      background: rgba(255,214,0,0.08);
+      border: 1px solid rgba(255,214,0,0.25);
       border-radius: 10px;
       padding: 16px 24px;
       position: relative;
@@ -414,7 +477,7 @@
     .stat-number {
       font-family: var(--font-display);
       font-size: 52px;
-      color: var(--primary);
+      color: var(--accent);
       line-height: 1;
     }
 
@@ -459,8 +522,8 @@
 
     .cat-card:hover {
       transform: translateY(-4px);
-      border-color: rgba(196,30,36,0.4);
-      background: rgba(196,30,36,0.06);
+      border-color: rgba(255,214,0,0.5);
+      background: rgba(255,214,0,0.06);
     }
 
     .cat-icon {
@@ -513,7 +576,7 @@
 
     .diff-card:hover {
       transform: translateY(-2px);
-      border-color: rgba(196,30,36,0.3);
+      border-color: rgba(255,214,0,0.3);
     }
 
     .diff-icon {
@@ -565,7 +628,7 @@
 
     .social-card:hover {
       transform: translateY(-2px);
-      border-color: rgba(196,30,36,0.3);
+      border-color: rgba(255,214,0,0.3);
     }
 
     .social-card-icon {
@@ -714,7 +777,7 @@
     }
 
     .footer-brand span {
-      color: var(--primary);
+      color: var(--accent);
     }
 
     .footer-desc {
@@ -871,7 +934,10 @@
 <body>
 <header>
   <nav class="nav" id="nav">
-    <div class="nav-brand">PANQUECA <span>CALABRESE</span></div>
+    <div class="nav-brand">
+      <div class="nav-logo"><img src="logo.png" alt="Panqueca Calabrese"></div>
+      <div class="nav-brand-text">PANQUECA <span>CALABRESE</span></div>
+    </div>
     <ul class="nav-links">
       <li><a href="#inicio">Início</a></li>
       <li><a href="#cardapio">Cardápio</a></li>
@@ -893,12 +959,13 @@
   <div class="hero-deco hero-deco--1"></div>
   <div class="hero-deco hero-deco--2"></div>
   <div class="hero-content">
+    <div class="hero-logo"><img src="logo.png" alt="Panqueca Calabrese"></div>
     <div class="hero-badge">📍 Taquaritinga - SP</div>
     <h1 class="hero-title">PANQUECA <span>CALABRESE</span></h1>
-    <p class="hero-headline">O sabor que Taquaritinga já conhece</p>
-    <p class="hero-sub">Panquecas, massas, lanches, risoto e muito mais. Peça pelo WhatsApp e receba no conforto da sua casa.</p>
+    <p class="hero-headline">MUITO MAIS que panquecas!</p>
+    <p class="hero-sub">Panquecas, massas, lanches, açaí, milk shake, sorvetes, porções e muito mais. Peça pelo WhatsApp e receba no conforto da sua casa!</p>
     <div class="hero-buttons">
-      <a href="https://panquecacalabresetaquaritinga.eatfood.app/category" target="_blank" rel="noopener" class="btn btn--primary">🍽️ Ver Cardápio</a>
+      <a href="https://panquecacalabresetaquaritinga.eatfood.app/category" target="_blank" rel="noopener" class="btn btn--accent">🍽️ Ver Cardápio</a>
       <a href="https://wa.me/5516997330681" target="_blank" rel="noopener" class="btn btn--whatsapp">📱 Pedir no WhatsApp</a>
       <a href="https://www.instagram.com/panqueca.calabrese/" target="_blank" rel="noopener" class="btn btn--outline">📸 Ver Instagram</a>
     </div>
@@ -913,9 +980,9 @@
 
 <section class="about" id="sobre">
   <p class="section-label">Quem Somos</p>
-  <h2 class="section-title">Mais que panquecas. Uma experiência de sabor.</h2>
-  <p>A Panqueca Calabrese é referência em Taquaritinga quando o assunto é sabor, variedade e praticidade. Do clássico ao surpreendente, nosso cardápio reúne panquecas, massas, lanches, risoto, porções e muito mais — tudo pensado pra matar sua fome de verdade.</p>
-  <p>Peça pelo WhatsApp, acompanhe pelo Instagram e receba na sua casa com a qualidade que você já conhece.</p>
+  <h2 class="section-title">Muito mais que panquecas. <span>É Calabrese!</span></h2>
+  <p>A Panqueca Calabrese é referência em Taquaritinga quando o assunto é sabor, variedade e praticidade. Nosso cardápio vai muito além das panquecas — tem massas, lanches, risoto, porções, açaí, milk shake, sorvetes e muito mais. Tudo feito pra matar sua fome de verdade!</p>
+  <p>Peça pelo WhatsApp, acompanhe as novidades pelo Instagram e receba na sua casa. A qualidade que Taquaritinga já conhece, agora com ainda mais opções!</p>
   <div class="about-stats">
     <div><div class="stat-number">10+</div><div class="stat-text">Categorias</div></div>
     <div><div class="stat-number">50+</div><div class="stat-text">Itens no cardápio</div></div>
@@ -1004,10 +1071,10 @@
 <section class="cta-section">
   <div class="cta-inner">
     <p class="section-label section-label--gold">Bateu a fome?</p>
-    <h2 class="section-title">Faça seu <span>pedido</span> agora</h2>
-    <p class="cta-sub">Escolha seu favorito no cardápio digital e peça pelo WhatsApp. Sabor, praticidade e qualidade na sua porta.</p>
+    <h2 class="section-title">Faça seu <span>pedido</span> agora!</h2>
+    <p class="cta-sub">Escolha seu favorito no cardápio digital e peça pelo WhatsApp. Sabor, praticidade e qualidade direto na sua porta!</p>
     <div class="cta-buttons">
-      <a href="https://panquecacalabresetaquaritinga.eatfood.app/category" target="_blank" rel="noopener" class="btn btn--primary">📋 Abrir Cardápio</a>
+      <a href="https://panquecacalabresetaquaritinga.eatfood.app/category" target="_blank" rel="noopener" class="btn btn--accent">📋 Abrir Cardápio</a>
       <a href="https://wa.me/5516997330681" target="_blank" rel="noopener" class="btn btn--whatsapp">📱 Pedir no WhatsApp</a>
     </div>
   </div>
@@ -1068,6 +1135,7 @@
 <footer class="footer">
   <div class="footer-inner">
     <div>
+      <div class="footer-logo"><img src="logo.png" alt="Panqueca Calabrese"></div>
       <div class="footer-brand">PANQUECA <span>CALABRESE</span></div>
       <p class="footer-desc">Sabor, variedade e praticidade em Taquaritinga - SP. Panquecas, massas, lanches e muito mais, todos os dias das 18h às 23h30.</p>
     </div>
