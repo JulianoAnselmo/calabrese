@@ -907,6 +907,14 @@
       .about-stats {
         gap: 28px;
       }
+
+      .launch-cards {
+        grid-template-columns: 1fr;
+      }
+
+      .launch {
+        padding: 60px 20px;
+      }
     }
 
     /* ===== RESPONSIVE — 600px ===== */
@@ -1093,6 +1101,8 @@
       background: linear-gradient(135deg, #2a0a2a 0%, #1a0a1a 40%, #1a0a0a 100%);
       position: relative;
       overflow: hidden;
+      box-sizing: border-box;
+      max-width: 100%;
     }
     .launch::before {
       content: '';
@@ -1151,6 +1161,8 @@
       grid-template-columns: repeat(3, 1fr);
       gap: 20px;
       margin-bottom: 36px;
+      max-width: 100%;
+      box-sizing: border-box;
     }
     .launch-card {
       background: rgba(255,255,255,0.05);
@@ -1159,6 +1171,9 @@
       padding: 32px 24px;
       text-align: center;
       transition: transform 0.2s, border-color 0.2s;
+      min-width: 0;
+      overflow-wrap: break-word;
+      word-break: break-word;
     }
     .launch-card:hover {
       transform: translateY(-4px);
