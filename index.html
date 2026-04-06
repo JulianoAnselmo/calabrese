@@ -951,45 +951,9 @@
         padding-right: 16px;
       }
 
-      .launch {
-        padding-top: 48px;
-        padding-bottom: 48px;
-      }
-
-      .launch-cards {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-      }
-
       .launch-card {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        text-align: left;
-        padding: 16px 20px;
-        gap: 16px;
-        border-radius: 14px;
-      }
-
-      .launch-card-icon {
-        font-size: 32px;
-        flex-shrink: 0;
-      }
-
-      .launch-card h3 {
-        font-size: 16px;
-        margin-bottom: 4px;
-      }
-
-      .launch-card p {
-        font-size: 12px;
-        line-height: 1.5;
-      }
-
-      .launch-sub {
-        font-size: 14px;
-        margin-bottom: 24px;
+        flex: 1 1 100%;
+        max-width: 100%;
       }
 
       .diff-grid {
@@ -1117,8 +1081,6 @@
       background: linear-gradient(135deg, #2a0a2a 0%, #1a0a1a 40%, #1a0a0a 100%);
       position: relative;
       overflow: hidden;
-      box-sizing: border-box;
-      max-width: 100%;
     }
     .launch::before {
       content: '';
@@ -1173,12 +1135,11 @@
       line-height: 1.7;
     }
     .launch-cards {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
       gap: 20px;
       margin-bottom: 36px;
-      max-width: 100%;
-      box-sizing: border-box;
     }
     .launch-card {
       background: rgba(255,255,255,0.05);
@@ -1187,7 +1148,8 @@
       padding: 32px 24px;
       text-align: center;
       transition: transform 0.2s, border-color 0.2s;
-      min-width: 0;
+      flex: 1 1 250px;
+      max-width: 340px;
     }
     .launch-card:hover {
       transform: translateY(-4px);
