@@ -958,41 +958,33 @@
 
       .launch-cards {
         display: flex;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
+        flex-direction: column;
         gap: 12px;
-        padding-bottom: 12px;
-        -webkit-overflow-scrolling: touch;
-      }
-
-      .launch-cards::-webkit-scrollbar {
-        height: 4px;
-      }
-
-      .launch-cards::-webkit-scrollbar-track {
-        background: rgba(255,255,255,0.05);
-        border-radius: 4px;
-      }
-
-      .launch-cards::-webkit-scrollbar-thumb {
-        background: rgba(224,64,251,0.4);
-        border-radius: 4px;
       }
 
       .launch-card {
-        min-width: 240px;
-        max-width: 280px;
-        flex-shrink: 0;
-        scroll-snap-align: center;
-        padding: 24px 20px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        text-align: left;
+        padding: 16px 20px;
+        gap: 16px;
+        border-radius: 14px;
       }
 
       .launch-card-icon {
-        font-size: 36px;
+        font-size: 32px;
+        flex-shrink: 0;
       }
 
       .launch-card h3 {
-        font-size: 18px;
+        font-size: 16px;
+        margin-bottom: 4px;
+      }
+
+      .launch-card p {
+        font-size: 12px;
+        line-height: 1.5;
       }
 
       .launch-sub {
