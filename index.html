@@ -908,10 +908,6 @@
         gap: 28px;
       }
 
-      .launch-cards {
-        grid-template-columns: 1fr;
-      }
-
       .launch {
         padding: 60px 20px;
       }
@@ -951,8 +947,8 @@
       .localizacao,
       .launch,
       .footer {
-        padding-left: 20px;
-        padding-right: 20px;
+        padding-left: 16px;
+        padding-right: 16px;
       }
 
       .launch {
@@ -960,8 +956,35 @@
         padding-bottom: 48px;
       }
 
+      .launch-cards {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: 12px;
+        padding-bottom: 12px;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .launch-cards::-webkit-scrollbar {
+        height: 4px;
+      }
+
+      .launch-cards::-webkit-scrollbar-track {
+        background: rgba(255,255,255,0.05);
+        border-radius: 4px;
+      }
+
+      .launch-cards::-webkit-scrollbar-thumb {
+        background: rgba(224,64,251,0.4);
+        border-radius: 4px;
+      }
+
       .launch-card {
-        padding: 24px 16px;
+        min-width: 240px;
+        max-width: 280px;
+        flex-shrink: 0;
+        scroll-snap-align: center;
+        padding: 24px 20px;
       }
 
       .launch-card-icon {
@@ -970,6 +993,11 @@
 
       .launch-card h3 {
         font-size: 18px;
+      }
+
+      .launch-sub {
+        font-size: 14px;
+        margin-bottom: 24px;
       }
 
       .diff-grid {
@@ -982,10 +1010,6 @@
 
       .cat-grid {
         grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-      }
-
-      .launch-cards {
-        grid-template-columns: 1fr;
       }
     }
 
@@ -1172,8 +1196,6 @@
       text-align: center;
       transition: transform 0.2s, border-color 0.2s;
       min-width: 0;
-      overflow-wrap: break-word;
-      word-break: break-word;
     }
     .launch-card:hover {
       transform: translateY(-4px);
